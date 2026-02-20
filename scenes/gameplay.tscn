@@ -3,11 +3,12 @@
 [ext_resource type="PackedScene" uid="uid://dqinbxe15aprd" path="res://temporal-dev-objects/furgo-roja.glb" id="1_00tan"]
 [ext_resource type="Script" uid="uid://2a8oolsjt37s" path="res://scripts/car_player.gd" id="2_ct7aa"]
 [ext_resource type="PackedScene" uid="uid://5ruek6txwnao" path="res://temporal-dev-objects/carretera-basic.glb" id="2_l1v76"]
+[ext_resource type="PackedScene" uid="uid://b88nupb2h8w25" path="res://temporal-dev-objects/rueda simple.glb" id="3_ct7aa"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_l1v76"]
 
-[sub_resource type="SphereShape3D" id="SphereShape3D_ct7aa"]
-radius = 1.4392402
+[sub_resource type="BoxShape3D" id="BoxShape3D_l1v76"]
+size = Vector3(2.3585205, 3.3289795, 5.47937)
 
 [sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_ocj2s"]
 
@@ -22,19 +23,34 @@ shape = SubResource("SphereShape3D_l1v76")
 [node name="furgo-roja" parent="RigidBody3D/CollisionShape3D" unique_id=661760140 instance=ExtResource("1_00tan")]
 
 [node name="CharacterBody3D" type="CharacterBody3D" parent="." unique_id=281782020 node_paths=PackedStringArray("modelo_visual")]
-transform = Transform3D(1, 0, 0, 0, 1, -3.7252903e-09, 0, 3.7252903e-09, 1, -0.09818065, 1.5877045, -1.1951956)
+transform = Transform3D(1, 0, 0, 0, 1, -3.7252903e-09, 0, 3.7252903e-09, 1, 0, 3.272, -1.195)
+collision_layer = 5
+collision_mask = 5
 script = ExtResource("2_ct7aa")
 modelo_visual = NodePath("furgo-roja")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D" unique_id=1534556668]
-transform = Transform3D(0.98533636, 0, 0, 0, 0.9839688, -0.051894818, 0, 0.051894818, 0.9839688, 0.09818065, -1.5877045, 1.1951956)
-shape = SubResource("SphereShape3D_ct7aa")
+inclinacion_maxima = 7.0
 
 [node name="Camera3D" type="Camera3D" parent="CharacterBody3D" unique_id=1942917057]
 transform = Transform3D(1, 0, 0, 0, 0.9536804, 0.30082172, 0, -0.3008217, 0.9536804, 0.09818065, 2.6561568, 4.5547485)
 fov = 68.751915
 
 [node name="furgo-roja" parent="CharacterBody3D" unique_id=816250090 instance=ExtResource("1_00tan")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D" unique_id=781639263]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.01776123, 0.53326416, -0.8970338)
+shape = SubResource("BoxShape3D_l1v76")
+
+[node name="rueda simple 1" parent="CharacterBody3D" unique_id=1575820435 instance=ExtResource("3_ct7aa")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 1, -0.148, 0.50500005)
+
+[node name="rueda simple 2" parent="CharacterBody3D" unique_id=1305276713 instance=ExtResource("3_ct7aa")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, -1.8626451e-09, 0, 1.8626451e-09, 0.5, 0.963429, -0.14754772, -2.0239587)
+
+[node name="rueda simple 3" parent="CharacterBody3D" unique_id=328299814 instance=ExtResource("3_ct7aa")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -1, -0.148, 0.50500005)
+
+[node name="rueda simple 4" parent="CharacterBody3D" unique_id=1018508347 instance=ExtResource("3_ct7aa")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, -1.8626451e-09, 0, 1.8626451e-09, 0.5, -0.963, -0.148, -2.0240002)
 
 [node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=1130470848]
 transform = Transform3D(70, 0, 0, 0, 70, 0, 0, 0, 70, 0.4309306, 0, 1.0176117)
@@ -46,4 +62,4 @@ shape = SubResource("WorldBoundaryShape3D_ocj2s")
 debug_color = Color(0.49803922, 1, 0.69803923, 0.41960785)
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="StaticBody3D" unique_id=1598714265]
-transform = Transform3D(0.010402141, -0.009719173, 0.0011894384, -0.009753036, -0.010438387, 2.1973534e-09, 0.0008691064, -0.000812046, -0.014236112, 0.18991524, 0.23394912, 0)
+transform = Transform3D(0.12051156, -0.11277275, -0.98628557, -0.68327385, -0.7301622, 0, -0.72014844, 0.67390317, -0.16504766, 0, 0, 0)

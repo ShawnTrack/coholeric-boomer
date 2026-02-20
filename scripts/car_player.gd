@@ -56,10 +56,12 @@ func _physics_process(delta: float) -> void:
 		# 1. Calculamos la rotación deseada en base a la velocidad lateral actual
 		# Usamos deg_to_rad porque Godot trabaja las rotaciones en radianes
 		var objetivo_z = -velocity.x / velocidad_lateral * deg_to_rad(inclinacion_maxima)
+		var objetivo_y = -velocity.x / velocidad_lateral * deg_to_rad(inclinacion_maxima) * 0.6
 		
 		# 2. Aplicamos la rotación suavemente con lerp (interpolación lineal)
 		modelo_visual.rotation.z = lerp_angle(modelo_visual.rotation.z, objetivo_z, suavizado_inclinacion * delta)
+		modelo_visual.rotation.y = lerp_angle(modelo_visual.rotation.x, objetivo_y, suavizado_inclinacion * delta)
 		
 		# Extra: Pequeña inclinación hacia adelante al acelerar
-		var objetivo_x = (velocity.z / velocidad_maxima_avance) * deg_to_rad(-5.0)
+		var objetivo_x = (velocity.z / velocidad_maxima_avance) * deg_to_rad(-3.0)
 		modelo_visual.rotation.x = lerp_angle(modelo_visual.rotation.x, objetivo_x, suavizado_inclinacion * delta)
